@@ -65,9 +65,12 @@ If you want to render different async components in the same DOM node and don't
 want to unmount already rendered component unless async state of the next
 component is fetched, there's `<Preloaded />` component which handles that:
 
+    var Preloaded = require('react-async/lib/Preloaded')
+
+
     <Preloaded>
       {this.renderAsyncTabContents({url: this.state.url})
-    </Preloader>
+    </Preloaded>
 
 It accepts only a single child and only that single child could be an async
 component. On first render it would render its child as-is but on subsequent
@@ -78,14 +81,14 @@ provide a `preloader` prop:
 
     <Preloaded preloader={Spinner()}>
       {this.renderAsyncTabContents({url: this.state.url})
-    </Preloader>
+    </Preloaded>
 
 You also can force preloader on subsequent renders with `alwayUsePreloader`
 prop:
 
     <Preloaded preloader={Spinner()} alwayUsePreloader>
       {this.renderAsyncTabContents({url: this.state.url})
-    </Preloader>
+    </Preloaded>
 
 ## Rendering async components on server with fetched async state
 
